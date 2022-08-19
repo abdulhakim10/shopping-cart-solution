@@ -13,14 +13,25 @@ function updatePhoneQuantity(isIncrese) {
     }
 
     phoneQuantityField.value = newPhoneQuantity;
+    return newPhoneQuantity;
+}
+
+
+function updatePhoneTotalPrice(newPhoneQuantity) {
+    const phonePrice = newPhoneQuantity * 1219;
+    const phoneTotalPrice = document.getElementById('phone-total-price');
+    phoneTotalPrice.innerText = phonePrice;
 }
 
 
 
 document.getElementById('phone-plus-btn').addEventListener('click', function () {
-    updatePhoneQuantity(true);
+    const newPhoneQuantity = updatePhoneQuantity(true);
+
+    updatePhoneTotalPrice(newPhoneQuantity);
 })
 
 document.getElementById('phone-minus-btn').addEventListener('click', function () {
-    updatePhoneQuantity(false);
+    const newPhoneQuantity = updatePhoneQuantity(false);
+    updatePhoneTotalPrice(newPhoneQuantity);
 })
